@@ -63,13 +63,13 @@ const Navigation = () => {
             >
               <span className="text-white text-2xl uppercase flex items-center gap-2 md:gap-4">
                 {userInfo.username}
-                <img src="./anon-profile.png" alt="" />
+                <img src="./anon-profile.png" alt="profile" />
               </span>
             </button>
           ) : null}
           {dropdownOpen && userInfo && (
             <ul
-              className={`absolute right-10 lg:right-0 px-5 space-y-2 bg-white text-gray-600 ${
+              className={`absolute right-10 lg:right-0 space-y-2 bg-white text-gray-600 ${
                 !userInfo.isAdmin ? "top-20" : "top-24"
               }`}
             >
@@ -77,7 +77,8 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/movies/dashboard"
-                    className="block px-4 py-2 hover:bg-gray-100"
+                    onClick={toggleDropdown}
+                    className="block px-10 py-2 hover:bg-gray-100"
                   >
                     Dashboard
                   </Link>
@@ -86,7 +87,8 @@ const Navigation = () => {
               <li>
                 <Link
                   to="/profile"
-                  className="block px-4 py-2 hover:bg-gray-100"
+                  onClick={toggleDropdown}
+                  className="block px-10 py-2 hover:bg-gray-100"
                 >
                   Profile
                 </Link>
@@ -94,7 +96,7 @@ const Navigation = () => {
               <li>
                 <button
                   onClick={logoutHandler}
-                  className="block w-full px-4 py-2 text-left hover:bg-gray-100"
+                  className="block w-full px-10 py-2 text-left hover:bg-gray-100"
                 >
                   Logout
                 </button>

@@ -1,0 +1,6 @@
+export const ourMission =
+  "At JOIN WAY FILM, our mission is to redefine the cinematic experience by creating a platform that effortlessly connects people with the magic of movies. We strive to make cinema accessible to everyone, delivering a vast collection of films from every corner of the globe. Whether you're exploring timeless classics, discovering hidden gems, or enjoying the latest blockbusters, our goal is to bring the art of storytelling into your life with ease, convenience, and a touch of inspiration—anytime, anywhere.";
+export const whoWeAre =
+  "We are a passionate team of entertainment enthusiasts dedicated to bringing you the best in film and television. Our mission is simple: to provide easy access to a vast library of movies and shows, ensuring you have endless options for entertainment. With a focus on quality, variety, and a seamless streaming experience, we strive to be your ultimate destination for all things film.";
+export const whatWeOffer =
+  "At JOIN WAY FILM, we offer a wide range of movies and TV shows from every genre imaginable. Whether you're into action, drama, comedy, or documentaries, you'll find something to enjoy. With new releases, classic favorites, and exclusive content, our platform gives you access to hours of entertainment—streamed instantly on any device, anytime, anywhere.";

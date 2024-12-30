@@ -6,7 +6,7 @@ import Navigation from "./pages/Auth/Navigation";
 const App = () => {
   return (
     <>
-      <ToastContainer />
+      <ToastContainer position="top-center" />
       <Navigation />
       <main className="">
         <Outlet />
