@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../../redux/api/users";
 import { logout } from "../../redux/features/auth/authSlice";
+import userProfile from "./anon-profile.png";
 
 const Navigation = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -63,7 +64,7 @@ const Navigation = () => {
             >
               <span className="text-white text-2xl uppercase flex items-center gap-2 md:gap-4">
                 {userInfo.username}
-                <img src="./anon-profile.png" alt="profile" />
+                <img src={userProfile} alt="profile" />
               </span>
             </button>
           ) : null}
