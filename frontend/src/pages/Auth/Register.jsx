@@ -50,14 +50,17 @@ const Register = () => {
   };
 
   return (
-    <div className="pt-40" style={{ backgroundImage: "url('/auth-bg.png')" }}>
+    <div
+      className="pt-36 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/auth-bg.png')" }}
+    >
       <div className="container mx-auto h-screen">
         <div className="flex flex-col max-w-[600px]">
           <h1 className="text-3xl font-medium">REGISTER</h1>
 
           <form onSubmit={submitHandler} className="px-2 sm:px-0">
             {/* Name */}
-            <div className="mt-16">
+            <div className="mt-8">
               <label
                 htmlFor="name"
                 className="block text-xl uppercase text-white"

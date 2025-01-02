@@ -44,14 +44,17 @@ const Login = () => {
   };
 
   return (
-    <div className="pt-40" style={{ backgroundImage: "url('/auth-bg.png')" }}>
-      <div className="container mx-auto h-screen">
+    <div
+      className="pt-36 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/auth-bg.png')" }}
+    >
+      <div className="container mx-auto h-screen bg-cover bg-center bg-no-repeat">
         <div className="flex flex-col max-w-[600px]">
           <h1 className="text-3xl font-medium">SIGN IN</h1>
 
           <form onSubmit={submitHandler} className="px-2 sm:px-0">
             {/* Email */}
-            <div className="mt-16">
+            <div className="mt-10">
               <label
                 htmlFor="email"
                 className="block text-xl uppercase text-white"

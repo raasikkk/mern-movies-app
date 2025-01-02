@@ -45,14 +45,17 @@ const Profile = () => {
   };
 
   return (
-    <div className="pt-40" style={{ backgroundImage: "url('/hero-bg.png')" }}>
+    <div
+      className="pt-32 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/hero-bg.png')" }}
+    >
       <div className="container mx-auto h-screen">
         <div className="flex flex-col justify-center items-center">
           <h1 className="text-3xl font-medium">Update Profile</h1>
 
           <form onSubmit={submitHandler} className="w-full lg:w-1/2">
             {/* Name */}
-            <div className="mt-16">
+            <div className="mt-10">
               <label
                 htmlFor="name"
                 className="block text-xl uppercase text-white"

@@ -60,7 +60,7 @@ const Navigation = () => {
           {userInfo ? (
             <button
               onClick={toggleDropdown}
-              className="text-gray-800 flex focus:outline-none"
+              className="text-gray-800  flex focus:outline-none"
             >
               <span className="text-white text-2xl uppercase flex items-center gap-2 md:gap-4">
                 {userInfo.username}
@@ -105,11 +105,11 @@ const Navigation = () => {
             </ul>
           )}
           {!userInfo && (
-            <ul className="flex mt-5">
+            <ul className="flex items-center ">
               <li>
                 <Link
                   to="/login"
-                  className="flex items-center transition-transform transform hover:-translate-y-1 mb-[2rem]"
+                  className="flex items-center transition-transform transform hover:-translate-y-1 "
                 >
                   <AiOutlineLogin className="mr-2" size={30} />
                   <span className="hidden nav-item-name">LOGIN</span>
@@ -129,7 +129,7 @@ const Navigation = () => {
           {/* Toggle Button */}
           <button
             onClick={toggleMenu}
-            className="block lg:hidden mb-3 text-white transition hover:-translate-y-1"
+            className="block lg:hidden text-white transition hover:-translate-y-1"
           >
             <AiOutlineMenu size={30} />
           </button>

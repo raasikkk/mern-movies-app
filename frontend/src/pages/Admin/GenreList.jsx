@@ -94,7 +94,10 @@ const GenreList = () => {
   };
 
   return (
-    <div className="pt-40" style={{ backgroundImage: "url('/auth-bg.png')" }}>
+    <div
+      className="pt-40 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/auth-bg.png')" }}
+    >
       <div className="container mx-auto h-screen">
         <div className="flex flex-col">
           <h1 className="font-bold text-5xl mb-5">Manage Genres</h1>
@@ -108,7 +111,7 @@ const GenreList = () => {
 
           <br />
 
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3 mt-3">
             {genres?.map((genre) => (
               <div key={genre._id}>
                 <button

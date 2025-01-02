@@ -131,18 +131,21 @@ const CreateMovie = () => {
         toast.success("Movie Added To Database");
       }
     } catch (error) {
-      console.error("Failed to create movie", createMovieErrorDetail);
+      console.error("Failed to create movie", error);
       toast.error(`Failed to create movie: ${createMovieErrorDetail?.message}`);
     }
   };
 
   return (
-    <div className="pt-40" style={{ backgroundImage: "url('/auth-bg.png')" }}>
-      <div className="container mx-auto h-[105vh]">
+    <div
+      className="pt-32 bg-cover  bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/auth-bg.png')" }}
+    >
+      <div className="container mx-auto">
         <form>
-          <h1 className="font-bold text-5xl mb-5">Create Movie</h1>
+          <h1 className="font-bold text-4xl mb-5">Create Movie</h1>
           {/* Name */}
-          <div className="mb-4 ">
+          <div className="mb-3 ">
             <label className="flex flex-col text-lg gap-3">
               Name:
               <input
@@ -150,13 +153,13 @@ const CreateMovie = () => {
                 name="name"
                 value={movieData.name}
                 onChange={handleChange}
-                className="w-full md:w-1/2 rounded-md"
+                className="w-full md:w-1/2 rounded-md h-10 text-base"
               />
             </label>
           </div>
 
           {/* Year */}
-          <div className="mb-4 ">
+          <div className="mb-3 ">
             <label className="flex flex-col text-lg gap-3">
               Year:
               <input
@@ -164,26 +167,26 @@ const CreateMovie = () => {
                 name="year"
                 value={movieData.year}
                 onChange={handleChange}
-                className="w-full md:w-1/2 rounded-md"
+                className="w-full md:w-1/2 rounded-md h-10 text-base"
               />
             </label>
           </div>
 
           {/* Detail */}
-          <div className="mb-4 ">
+          <div className="mb-3 ">
             <label className="flex flex-col text-lg gap-3">
               Detail:
               <textarea
                 name="detail"
                 value={movieData.detail}
                 onChange={handleChange}
-                className="w-full md:w-1/2 rounded-md"
+                className="w-full md:w-1/2 rounded-md h-16 text-base"
               ></textarea>
             </label>
           </div>
 
           {/* Cast */}
-          <div className="mb-4 ">
+          <div className="mb-3 ">
             <label className="flex flex-col text-lg gap-3">
               Cast (coma-separated):
               <input
@@ -196,20 +199,20 @@ const CreateMovie = () => {
                     cast: e.target.value.split(", "),
                   })
                 }
-                className="w-full md:w-1/2 rounded-md"
+                className="w-full md:w-1/2 rounded-md h-10 text-base"
               />
             </label>
           </div>
 
           {/* Genre */}
-          <div className="mb-4 ">
+          <div className="mb-3 ">
             <label className="flex flex-col text-lg gap-3">
               Genre:
               <select
                 name="genre"
                 value={movieData.genre}
                 onChange={handleChange}
-                className="w-full md:w-1/2 rounded-md"
+                className="w-full md:w-1/2 rounded-md h-10 text-base"
               >
                 {isLoadingGenres ? (
                   <option>Loading genres...</option>
@@ -225,7 +228,7 @@ const CreateMovie = () => {
           </div>
 
           {/* Link */}
-          <div className="mb-4 ">
+          <div className="mb-3 ">
             <label className="flex flex-col text-lg gap-3">
               Link:
               <input
@@ -233,79 +236,69 @@ const CreateMovie = () => {
                 name="link"
                 value={movieData.link}
                 onChange={handleChange}
-                className="w-full md:w-1/2 rounded-md"
+                className="w-full md:w-1/2 rounded-md h-10 text-base"
               />
             </label>
           </div>
 
-          {/* Vertical Image */}
-          <div className="mb-5 mt-5">
-            <label
-              style={
-                !selectedImageVertical
-                  ? {
-                      border: "1px solid #888",
-                      borderRadius: "5px",
-                      padding: "8px",
-                    }
-                  : {
-                      border: "0",
-                      borderRadius: "0",
-                      padding: 0,
-                    }
-              }
-            >
-              {!selectedImageVertical && "Upload Vertical Image"}
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageVerticalChange}
-                className="rounded-md text-white "
-                style={{
-                  background:
-                    "linear-gradient(90deg, #990000 0%, #ff0000 49%, #990000 100%)",
-                  display: !selectedImageVertical ? "none" : "block",
-                }}
-              />
-            </label>
-          </div>
+          <div className="flex items-center gap-5 mt-3">
+            {/* Vertical Image */}
+            <div className="mb-3 ">
+              <p className="mb-3 font-medium">Vertical Image:</p>
+              <div className="relative ">
+                {!selectedImageVertical ? (
+                  <label
+                    htmlFor="verticalImageInput"
+                    className="cursor-pointer inline-block  border border-gray-400 rounded-md px-4 py-2 text-center text-white transition duration-200"
+                  >
+                    Upload Vertical Image
+                  </label>
+                ) : (
+                  <button className="text-lg text-green-600">
+                    Image uploaded successfully!
+                  </button>
+                )}
+                <input
+                  id="verticalImageInput"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageVerticalChange}
+                  className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
+                />
+              </div>
+            </div>
 
-          {/* Horizontal Image */}
-          <div className="mb-5 mt-5">
-            <label
-              style={
-                !selectedImageHorizontal
-                  ? {
-                      border: "1px solid #888",
-                      borderRadius: "5px",
-                      padding: "8px",
-                    }
-                  : {
-                      border: "0",
-                      borderRadius: "0",
-                      padding: 0,
-                    }
-              }
-            >
-              {!selectedImageHorizontal && "Upload Horizontal Image"}
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageHorizontalChange}
-                className="rounded-md text-white "
-                style={{
-                  background:
-                    "linear-gradient(90deg, #990000 0%, #ff0000 49%, #990000 100%)",
-                  display: !selectedImageHorizontal ? "none" : "block",
-                }}
-              />
-            </label>
+            {/* Horizontal Image */}
+            <div className="mb-3 ">
+              <p className="mb-3 font-medium">Horizontal Image:</p>
+              <div className="relative">
+                {!selectedImageHorizontal ? (
+                  <label
+                    htmlFor="horizontalImageInput"
+                    className="cursor-pointer inline-block  border border-gray-400 rounded-md px-4 py-2 text-center text-white transition duration-200"
+                  >
+                    Upload Horizontal Image
+                  </label>
+                ) : (
+                  <p className="text-lg text-green-600">
+                    Image uploaded successfully!
+                  </p>
+                )}
+                <input
+                  id="horizontalImageInput"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageHorizontalChange}
+                  className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
+                />
+              </div>
+            </div>
           </div>
 
           <button
             type="button"
             onClick={handleCreateMovie}
-            className="w-full md:w-auto p-3 px-6 mt-5 font-semibold rounded-md hover:opacity-90 focus:outline-none focus:opacity-90 focus:border-2"
+            className="w-full md:w-auto pb-3 p-3 px-6 mt-3 font-semibold rounded-md hover:opacity-90 focus:outline-none focus:opacity-90 focus:border-2"
             disabled={isCreatingMovie || isUploadingImage}
             style={{
               background:
