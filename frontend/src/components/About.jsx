@@ -5,6 +5,7 @@ import {
   whoWeAre,
   whatWeOffer,
 } from "../redux/features/toggle/contentConstants";
+import { motion } from "framer-motion";
 
 const About = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,15 @@ const About = () => {
     <div className="container mx-auto">
       <div className="flex items-center justify-between gap-5 flex-wrap lg:flex-nowrap">
         <div className="flex flex-col lg:w-3/4 pt-10">
-          <h2
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ margin: "-100px", once: true }}
+            transition={{
+              type: "spring",
+              stiffness: 50,
+              damping: 25,
+            }}
             className="text-3xl mt-5 border-b-[16px] w-40"
             style={{
               borderBottomWidth: "16px",
@@ -27,14 +36,34 @@ const About = () => {
             }}
           >
             ABOUT US
-          </h2>
-          <h1 className="mt-8 text-4xl sm:text-6xl md:text-6xl font-semibold leading-tight md:leading-tight">
-            Your go-to platform for <span className="text-red-600">movies</span>
-            —anytime, anywhere!
-          </h1>
+          </motion.h2>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }} // Start with opacity 0 and move it 30px down
+            whileInView={{ opacity: 1, y: 0 }} // Fade in to opacity 1 and slide up to its position
+            viewport={{ margin: "-200px", once: true }}
+            transition={{
+              type: "spring",
+              stiffness: 50,
+              damping: 25,
+            }}
+            className="mt-8 text-4xl sm:text-6xl md:text-6xl font-semibold leading-tight md:leading-tight"
+          >
+            Your go-to platform for <span className="text-red-600">movies</span>{" "}
+            — anytime, anywhere!
+          </motion.h1>
 
           {/* Buttons */}
-          <div className="mt-8 flex flex-wrap items-center gap-5">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ margin: "-100px", once: true }}
+            transition={{
+              type: "spring",
+              stiffness: 50,
+              damping: 25,
+            }}
+            className="mt-8 flex flex-wrap items-center gap-5"
+          >
             <button
               onClick={() => handleButtonClick(ourMission, "first")}
               className={`p-3 px-6 rounded-md border-2 hover:text-red-500 hover:border-red-500 ${
@@ -67,10 +96,20 @@ const About = () => {
             >
               What We Offer
             </button>
-          </div>
-          <p className="mt-8 text-base sm:text-lg md:text-xl min-h-[300px] md:min-h-[330px]">
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ margin: "-100px", once: true }}
+            transition={{
+              type: "spring",
+              stiffness: 50,
+              damping: 25,
+            }}
+            className="mt-8 text-base sm:text-lg md:text-xl min-h-[300px] md:min-h-[330px]"
+          >
             {content}
-          </p>
+          </motion.p>
         </div>
         <div className="flex flex-row items-center mx-auto md:mb-16 gap-5">
           <div className="flex flex-col gap-7">

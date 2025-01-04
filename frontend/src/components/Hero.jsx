@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import Typed from "react-typed-component";
+// import { Typed } from "react-typed";
 
 const Hero = () => {
   return (
@@ -7,9 +9,21 @@ const Hero = () => {
       style={{ backgroundImage: "url('/hero-bg.png')" }}
     >
       <div className="container mx-auto mt-16">
-        <h1 className="hero-header">
-          Stream Top <span className="text-red-600">Movies</span> And Shows
-          Anytime, Anywhere.
+        <h1 className="hero-header min-h-48">
+          <Typed
+            strings={[
+              "Stream Top <span class='text-red-600'>Movies</span> And Shows Anytime, Anywhere.",
+              "Watch Your <span class='text-red-600'>Favorites</span> Anytime, Anywhere.",
+              "Search For <span class='text-red-600'>Movies</span> And TV Shows",
+            ]}
+            typeSpeed={80}
+            backSpeed={50}
+            loop
+            smartBackspace
+            renderFunction={(string) => (
+              <span dangerouslySetInnerHTML={{ __html: string }} />
+            )}
+          />
         </h1>
 
         <div className="flex items-center flex-row flex-wrap gap-5 mt-14">

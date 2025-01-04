@@ -5,6 +5,7 @@ import Loader from "../../components/Loader";
 import { setCredentials } from "../../redux/features/auth/authSlice";
 import { useLoginMutation } from "../../redux/api/users";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -50,9 +51,32 @@ const Login = () => {
     >
       <div className="container mx-auto h-screen bg-cover bg-center bg-no-repeat">
         <div className="flex flex-col max-w-[600px]">
-          <h1 className="text-3xl font-medium">SIGN IN</h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ margin: "-100px", once: true }}
+            transition={{
+              type: "spring",
+              stiffness: 50,
+              damping: 25,
+            }}
+            className="text-3xl font-medium"
+          >
+            SIGN IN
+          </motion.h1>
 
-          <form onSubmit={submitHandler} className="px-2 sm:px-0">
+          <motion.form
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ margin: "-100px", once: true }}
+            transition={{
+              type: "spring",
+              stiffness: 50,
+              damping: 25,
+            }}
+            onSubmit={submitHandler}
+            className="px-2 sm:px-0"
+          >
             {/* Email */}
             <div className="mt-10">
               <label
@@ -93,9 +117,19 @@ const Login = () => {
             </button>
 
             {isLoading && <Loader />}
-          </form>
+          </motion.form>
 
-          <div className="mt-5">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ margin: "-100px", once: true }}
+            transition={{
+              type: "spring",
+              stiffness: 50,
+              damping: 25,
+            }}
+            className="mt-5"
+          >
             <p>
               New Customer?{" "}
               <Link
@@ -105,7 +139,7 @@ const Login = () => {
                 Register
               </Link>
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

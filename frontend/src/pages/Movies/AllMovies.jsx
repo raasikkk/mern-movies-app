@@ -16,6 +16,7 @@ import {
   setUniqueYears,
 } from "../../redux/features/movies/moviesSlice";
 import Footer from "../../components/Footer";
+import { motion } from "framer-motion";
 
 const AllMovies = () => {
   const dispatch = useDispatch();
@@ -85,14 +86,34 @@ const AllMovies = () => {
       >
         <div className="container mx-auto">
           <div className="flex relative flex-col mx-auto w-full md:w-1/2 mt-16">
-            <h1 className="xs:text-5xl md:text-6xl lg:text-7xl text-center leading-tight md:leading-tight customlg:leading-snug font-extrabold  ">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ margin: "-100px", once: true }}
+              transition={{
+                type: "spring",
+                stiffness: 50,
+                damping: 25,
+              }}
+              className="xs:text-5xl md:text-6xl lg:text-7xl text-center leading-tight md:leading-tight customlg:leading-snug font-extrabold  "
+            >
               Search For <span className="text-red-600">Movies</span> And TV
               Shows
-            </h1>
-            <p className="text-gray-400 text-center">
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ margin: "-100px", once: true }}
+              transition={{
+                type: "spring",
+                stiffness: 50,
+                damping: 25,
+              }}
+              className="text-gray-400 text-center"
+            >
               Looking for something to watch? Start typing to find your perfect
               film or show. From blockbusters to hidden gems, we’ve got it all.
-            </p>
+            </motion.p>
             <div className="mt-5 w-full relative ">
               <input
                 type="text"

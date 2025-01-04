@@ -9,6 +9,7 @@ import {
 import MovieTabs from "./MovieTabs";
 import UpcomingFilms from "./UpcomingFilms";
 import Footer from "../../components/Footer";
+import { motion } from "framer-motion";
 
 const MovieDetails = () => {
   const { id: movieId } = useParams();
@@ -57,10 +58,32 @@ const MovieDetails = () => {
         <div className="container mx-auto pt-32">
           <div className="flex mt-10 relative flex-col md:flex-row items-center justify-between">
             <div className="flex flex-col md:w-1/2">
-              <h1 className="xs:text-5xl md:text-6xl lg:text-7xl xs:leading-tight md:leading-tight customlg:leading-snug font-extrabold">
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ margin: "-100px", once: true }}
+                transition={{
+                  type: "spring",
+                  stiffness: 50,
+                  damping: 25,
+                }}
+                className="xs:text-5xl md:text-6xl lg:text-7xl xs:leading-tight md:leading-tight customlg:leading-snug font-extrabold"
+              >
                 {movie?.name}
-              </h1>
-              <p className="text-sm mt-3">{movie?.detail}</p>
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ margin: "-100px", once: true }}
+                transition={{
+                  type: "spring",
+                  stiffness: 50,
+                  damping: 25,
+                }}
+                className="text-sm mt-3"
+              >
+                {movie?.detail}
+              </motion.p>
               <Link
                 to={movie?.link}
                 style={{

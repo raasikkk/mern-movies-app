@@ -5,6 +5,7 @@ import Loader from "../../components/Loader";
 import { setCredentials } from "../../redux/features/auth/authSlice";
 import { useRegisterMutation } from "../../redux/api/users";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -56,9 +57,32 @@ const Register = () => {
     >
       <div className="container mx-auto h-screen">
         <div className="flex flex-col max-w-[600px]">
-          <h1 className="text-3xl font-medium">REGISTER</h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ margin: "-100px", once: true }}
+            transition={{
+              type: "spring",
+              stiffness: 50,
+              damping: 25,
+            }}
+            className="text-3xl font-medium"
+          >
+            REGISTER
+          </motion.h1>
 
-          <form onSubmit={submitHandler} className="px-2 sm:px-0">
+          <motion.form
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ margin: "-100px", once: true }}
+            transition={{
+              type: "spring",
+              stiffness: 50,
+              damping: 25,
+            }}
+            onSubmit={submitHandler}
+            className="px-2 sm:px-0"
+          >
             {/* Name */}
             <div className="mt-8">
               <label
@@ -133,9 +157,19 @@ const Register = () => {
             </button>
 
             {isLoading && <Loader />}
-          </form>
+          </motion.form>
 
-          <div className="mt-5">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ margin: "-100px", once: true }}
+            transition={{
+              type: "spring",
+              stiffness: 50,
+              damping: 25,
+            }}
+            className="mt-5"
+          >
             <p>
               Already have an account?{" "}
               <Link
@@ -145,7 +179,7 @@ const Register = () => {
                 Login
               </Link>
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

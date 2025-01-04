@@ -1,7 +1,17 @@
+import { motion } from "framer-motion";
+
 const UpcomingFilms = ({ horizontal }) => {
   return (
     <div className="container mx-auto">
-      <h1
+      <motion.h1
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ margin: "-100px", once: true }}
+        transition={{
+          type: "spring",
+          stiffness: 50,
+          damping: 25,
+        }}
         className="text-3xl  mb-10 border-b-[16px] w-64"
         style={{
           borderBottomWidth: "16px",
@@ -10,7 +20,7 @@ const UpcomingFilms = ({ horizontal }) => {
         }}
       >
         UPCOMING FILMS
-      </h1>
+      </motion.h1>
       {/* Cards */}
       <div
         className={`flex flex-wrap justify-center items-center ${

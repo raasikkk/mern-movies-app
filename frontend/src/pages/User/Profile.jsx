@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
 import { setCredentials } from "../../redux/features/auth/authSlice";
 import { useProfileMutation } from "../../redux/api/users";
+import { motion } from "framer-motion";
 
 const Profile = () => {
   const [username, setUsername] = useState("");
@@ -51,9 +52,32 @@ const Profile = () => {
     >
       <div className="container mx-auto h-screen">
         <div className="flex flex-col justify-center items-center">
-          <h1 className="text-3xl font-medium">Update Profile</h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ margin: "-100px", once: true }}
+            transition={{
+              type: "spring",
+              stiffness: 50,
+              damping: 25,
+            }}
+            className="text-3xl font-medium"
+          >
+            Update Profile
+          </motion.h1>
 
-          <form onSubmit={submitHandler} className="w-full lg:w-1/2">
+          <motion.form
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ margin: "-100px", once: true }}
+            transition={{
+              type: "spring",
+              stiffness: 50,
+              damping: 25,
+            }}
+            onSubmit={submitHandler}
+            className="w-full lg:w-1/2"
+          >
             {/* Name */}
             <div className="mt-10">
               <label
@@ -130,7 +154,7 @@ const Profile = () => {
 
               {loadingUpdateProfile && <Loader />}
             </div>
-          </form>
+          </motion.form>
         </div>
       </div>
     </div>
