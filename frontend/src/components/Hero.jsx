@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <div
-      className="w-full min-h-[900px] bg-cover bg-center bg-no-repeat pt-32"
+      className="w-full min-h-[750px] bg-cover bg-center bg-no-repeat pt-32"
       style={{ backgroundImage: "url('/hero-bg.png')" }}
     >
       <div className="container mx-auto mt-16">

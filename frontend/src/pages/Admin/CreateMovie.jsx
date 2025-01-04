@@ -108,11 +108,12 @@ const CreateMovie = () => {
           return;
         }
 
-        await createMovie({
+        const createMovieResponse = await createMovie({
           ...movieData,
           imageVertical: uploadedImageVerticalPath,
           imageHorizontal: uploadedImageHorizontalPath,
         });
+        console.log("Create Movie Response:", createMovieResponse);
 
         navigate("/admin/movies-list");
 
@@ -180,7 +181,7 @@ const CreateMovie = () => {
                 name="detail"
                 value={movieData.detail}
                 onChange={handleChange}
-                className="w-full md:w-1/2 rounded-md h-16 text-base"
+                className="w-full md:w-1/2 rounded-md h-20 text-sm"
               ></textarea>
             </label>
           </div>

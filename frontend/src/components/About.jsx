@@ -15,7 +15,7 @@ const About = () => {
   };
 
   return (
-    <div className="container mx-auto min-h-[900px] mt-16">
+    <div className="container mx-auto">
       <div className="flex items-center justify-between gap-5 flex-wrap lg:flex-nowrap">
         <div className="flex flex-col lg:w-3/4 pt-10">
           <h2

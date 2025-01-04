@@ -4,8 +4,7 @@ import {
   AiOutlineUserAdd,
   AiOutlineMenu,
 } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../../redux/api/users";
 import { logout } from "../../redux/features/auth/authSlice";
@@ -26,6 +25,7 @@ const Navigation = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [logoutApiCall] = useLogoutMutation();
 
@@ -39,21 +39,43 @@ const Navigation = () => {
     }
   };
 
+  // Handle scrolling to sections on the home page
+  const scrollToSection = (id) => {
+    if (location.pathname === "/") {
+      // If the user is on the home page, scroll directly to the section
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // If the user is not on the home page, navigate to it first
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 200); // Slight delay to ensure the page is fully loaded before scrolling
+    }
+  };
+
   return (
-    <div className="absolute top-0 w-full mb-5 text-white">
-      <section className="flex justify-between items-center container mx-auto mt-5">
+    <div className="absolute z-50 top-0 w-full mb-5 text-white">
+      <section className="flex justify-between items-center container mx-auto px-2 mt-5">
         {/* Logo */}
-        <div className="logo text-2xl">
+        <div className="logo text-xl md:text-2xl">
           <Link to="/">
             JOIN WAY <span className="text-red-600">FILM</span>
           </Link>
         </div>
         {/* Regular Links */}
         <div className="hidden lg:flex justify-between items-center w-1/2 text-2xl">
-          <Link to="/">HOME</Link>
-          <Link to="/movies">ABOUT US</Link>
-          <Link to="/">SEARCH</Link>
-          <Link to="/">TOP MOVIES</Link>
+          <Link to="/" onClick={() => scrollToSection("")}>
+            HOME
+          </Link>
+          <button onClick={() => scrollToSection("about")}>ABOUT US</button>
+          <Link to="/movies">SEARCH</Link>
+          <button onClick={() => scrollToSection("top")}>TOP MOVIES</button>
         </div>
         {/* Section 2 */}
         <div className="relative flex items-center space-x-4 ">
@@ -62,9 +84,9 @@ const Navigation = () => {
               onClick={toggleDropdown}
               className="text-gray-800  flex focus:outline-none"
             >
-              <span className="text-white text-2xl uppercase flex items-center gap-2 md:gap-4">
+              <span className="text-white text-xl md:text-2xl uppercase flex items-center gap-2 md:gap-4">
                 {userInfo.username}
-                <img src={userProfile} alt="profile" />
+                <img src={userProfile} alt="profile" width={30} />
               </span>
             </button>
           ) : null}
@@ -148,18 +170,34 @@ const Navigation = () => {
         >
           ✕
         </button>
-        <Link to="/" onClick={toggleMenu}>
+        <Link
+          to="/"
+          onClick={() => {
+            scrollToSection("");
+            toggleMenu();
+          }}
+        >
           HOME
         </Link>
-        <Link to="/movies" onClick={toggleMenu}>
+        <button
+          onClick={() => {
+            scrollToSection("about");
+            toggleMenu();
+          }}
+        >
           ABOUT US
-        </Link>
-        <Link to="/" onClick={toggleMenu}>
+        </button>
+        <Link to="/movies" onClick={toggleMenu}>
           SEARCH
         </Link>
-        <Link to="/" onClick={toggleMenu}>
+        <button
+          onClick={() => {
+            scrollToSection("top");
+            toggleMenu();
+          }}
+        >
           TOP MOVIES
-        </Link>
+        </button>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useGetAllMoviesQuery } from "../../redux/api/movies";
+import Footer from "../../components/Footer";
 
 const AdminMoviesList = () => {
   const { data: movies } = useGetAllMoviesQuery();
@@ -43,6 +44,7 @@ const AdminMoviesList = () => {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
