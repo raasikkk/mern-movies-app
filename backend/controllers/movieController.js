@@ -57,7 +57,7 @@ const movieReview = async (req, res) => {
 
     if (movie) {
       const alreadyReviewed = movie.reviews.find(
-        (r) => r.user.toString() === req.user._id.tiString()
+        (r) => r.user.toString() === req.user._id.toString()
       );
 
       if (alreadyReviewed) {

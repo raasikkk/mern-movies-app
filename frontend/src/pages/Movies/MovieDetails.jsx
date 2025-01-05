@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 
 const MovieDetails = () => {
   const { id: movieId } = useParams();
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(1);
   const [comment, setComment] = useState("");
   const { data: movie, refetch } = useGetSpecificMovieQuery(movieId);
   const { userInfo } = useSelector((state) => state.auth);
@@ -27,13 +27,18 @@ const MovieDetails = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
+    console.log("Submitting review:", { id: movieId, rating, comment });
+
     try {
-      await createReview({
+      const response = await createReview({
         id: movieId,
         rating,
         comment,
       }).unwrap();
 
+      console.log(response);
+
+      setComment("");
       refetch();
 
       toast.success("Review created successfully");
