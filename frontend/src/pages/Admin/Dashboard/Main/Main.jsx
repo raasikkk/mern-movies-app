@@ -30,7 +30,7 @@ const Main = () => {
           </div>
 
           {/* Links */}
-          <div className="mt-10 flex justify-center gap-5">
+          <div className="mt-10 flex flex-wrap justify-center gap-5">
             <Link
               to="/admin/movies/create"
               className="border-2 border-white p-2 px-4 rounded-md hover:bg-red-600"
