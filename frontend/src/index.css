@@ -9,7 +9,7 @@
 }
 
 html {
-  /* scroll-behavior: smooth; */
+  @apply selection:bg-[#FF0000]/50;
 }
 
 body {

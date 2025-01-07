@@ -9,6 +9,7 @@ import {
 import { toast } from "react-toastify";
 import GenreForm from "../../components/GenreForm";
 import Modal from "../../components/Modal";
+import { motion } from "framer-motion";
 
 const GenreList = () => {
   const { data: genres, refetch } = useFetchGenresQuery();
@@ -99,7 +100,17 @@ const GenreList = () => {
       style={{ backgroundImage: "url('/auth-bg.png')" }}
     >
       <div className="container mx-auto h-screen">
-        <div className="flex flex-col">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ margin: "-100px", once: true }}
+          transition={{
+            type: "spring",
+            stiffness: 50,
+            damping: 25,
+          }}
+          className="flex flex-col"
+        >
           <h1 className="font-bold text-5xl mb-5">Manage Genres</h1>
           <div className="w-full md:w-1/2">
             <GenreForm
@@ -139,7 +150,7 @@ const GenreList = () => {
               handleDelete={handleDeleteGenre}
             />
           </Modal>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

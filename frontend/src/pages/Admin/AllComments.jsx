@@ -3,6 +3,7 @@ import {
   useGetAllMoviesQuery,
 } from "../../redux/api/movies";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
 
 const AllComments = () => {
   const { data: movie, refetch } = useGetAllMoviesQuery();
@@ -20,7 +21,17 @@ const AllComments = () => {
   };
 
   return (
-    <div className="pt-32 container mx-auto">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ margin: "-100px", once: true }}
+      transition={{
+        type: "spring",
+        stiffness: 50,
+        damping: 25,
+      }}
+      className="pt-32 container mx-auto"
+    >
       <h1 className="text-3xl font-medium text-center">All Comments</h1>
       {movie?.map((m) => (
         <section key={m._id} className="flex flex-col items-center px-2">
@@ -49,7 +60,7 @@ const AllComments = () => {
           ))}
         </section>
       ))}
-    </div>
+    </motion.div>
   );
 };
 export default AllComments;

@@ -34,7 +34,7 @@ const RandomMovies = () => {
       <div className="flex items-center justify-end md:mr-10">
         <Link
           to="/movies"
-          className="p-3 px-5 rounded-md font-semibold flex items-center gap-3 justify-end hover:opacity-90"
+          className="p-3 px-5 rounded-md font-semibold flex items-center gap-3 justify-end transition hover:-translate-y-1 hover:opacity-90"
           style={{
             background:
               "linear-gradient(90deg, #990000 0%, #ff0000 49%, #990000 100%)",

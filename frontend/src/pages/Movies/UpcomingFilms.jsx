@@ -12,7 +12,9 @@ const UpcomingFilms = ({ horizontal }) => {
           stiffness: 50,
           damping: 25,
         }}
-        className="text-3xl  mb-10 border-b-[16px] w-64"
+        className={`text-3xl  mb-10 border-b-[16px] w-64 ${
+          !horizontal && "mt-10 md:mt-0"
+        }`}
         style={{
           borderBottomWidth: "16px",
           borderImage: "linear-gradient(to left, #990000, #1E1E1E) 1",

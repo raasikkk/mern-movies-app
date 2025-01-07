@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useGetAllMoviesQuery } from "../../redux/api/movies";
 import Footer from "../../components/Footer";
+import { motion } from "framer-motion";
 
 const AdminMoviesList = () => {
   const { data: movies } = useGetAllMoviesQuery();
@@ -8,11 +9,31 @@ const AdminMoviesList = () => {
   return (
     <div className="pt-32">
       <div className="container mx-auto">
-        <div className="text-4xl md:text-5xl font-bold">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ margin: "-100px", once: true }}
+          transition={{
+            type: "spring",
+            stiffness: 50,
+            damping: 25,
+          }}
+          className="text-4xl md:text-5xl font-bold"
+        >
           All Movies ({movies?.length})
-        </div>
+        </motion.div>
 
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  customlg:grid-cols-5 gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ margin: "-100px", once: true }}
+          transition={{
+            type: "spring",
+            stiffness: 50,
+            damping: 25,
+          }}
+          className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  customlg:grid-cols-5 gap-6"
+        >
           {movies?.map((movie) => (
             <Link
               to={`/admin/movies/update/${movie._id}`}
@@ -42,7 +63,7 @@ const AdminMoviesList = () => {
               </div>
             </Link>
           ))}
-        </div>
+        </motion.div>
       </div>
       <Footer />
     </div>

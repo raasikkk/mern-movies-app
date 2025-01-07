@@ -66,7 +66,7 @@ const About = () => {
           >
             <button
               onClick={() => handleButtonClick(ourMission, "first")}
-              className={`p-3 px-6 rounded-md border-2 hover:text-red-500 hover:border-red-500 ${
+              className={`p-3 px-6 rounded-md border-2 transition hover:-translate-y-1 hover:text-red-500 hover:border-red-500 ${
                 selectedButton === "first"
                   ? "text-red-600 border-red-600"
                   : "text-white border-white"
@@ -77,7 +77,7 @@ const About = () => {
 
             <button
               onClick={() => handleButtonClick(whoWeAre, "second")}
-              className={`p-3 px-6 rounded-md border-2 hover:text-red-500 hover:border-red-500 ${
+              className={`p-3 px-6 rounded-md border-2 transition hover:-translate-y-1 hover:text-red-500 hover:border-red-500 ${
                 selectedButton === "second"
                   ? "text-red-600 border-red-600"
                   : "text-white border-white"
@@ -88,7 +88,7 @@ const About = () => {
 
             <button
               onClick={() => handleButtonClick(whatWeOffer, "third")}
-              className={`p-3 px-6 rounded-md border-2 hover:text-red-500 hover:border-red-500 ${
+              className={`p-3 px-6 rounded-md border-2 transition hover:-translate-y-1 hover:text-red-500 hover:border-red-500 ${
                 selectedButton === "third"
                   ? "text-red-600 border-red-600"
                   : "text-white border-white"

@@ -43,6 +43,7 @@ const MovieDetails = () => {
 
       toast.success("Review created successfully");
     } catch (error) {
+      toast.error("You already created comment");
       toast.error(error.data || error.message);
     }
   };

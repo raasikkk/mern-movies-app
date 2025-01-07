@@ -7,6 +7,7 @@ import {
   useDeleteMovieMutation,
 } from "../../redux/api/movies";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
 
 const UpdateMovie = () => {
   const { id } = useParams();
@@ -128,7 +129,16 @@ const UpdateMovie = () => {
       style={{ backgroundImage: "url('/auth-bg.png')" }}
     >
       <div className="container mx-auto">
-        <form>
+        <motion.form
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ margin: "-100px", once: true }}
+          transition={{
+            type: "spring",
+            stiffness: 50,
+            damping: 25,
+          }}
+        >
           <h1 className="font-bold text-4xl mb-5">Update Movie</h1>
           {/* Name */}
           <div className="mb-3 ">
@@ -287,7 +297,7 @@ const UpdateMovie = () => {
               ? "Deleting..."
               : "Delete Movie"}
           </button>
-        </form>
+        </motion.form>
       </div>
     </div>
   );

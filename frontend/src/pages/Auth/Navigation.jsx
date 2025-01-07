@@ -59,23 +59,66 @@ const Navigation = () => {
     }
   };
 
+  // Links hover Effect
+  const [hoveredLink, setHoveredLink] = useState(null);
+
+  const handleMouseEnter = (link) => {
+    setHoveredLink(link);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredLink(null);
+  };
+
+  const links = [
+    { label: "HOME", path: "/", section: "" },
+    { label: "ABOUT US", path: "#", section: "about" },
+    { label: "SEARCH", path: "/movies", section: null },
+    { label: "TOP MOVIES", path: "#", section: "top" },
+  ];
+
   return (
     <div className="absolute z-50 top-0 w-full mb-5 text-white">
       <section className="flex justify-between items-center container mx-auto px-2 mt-5">
         {/* Logo */}
-        <div className="logo text-xl md:text-2xl">
+        <div className="logo text-xl md:text-2xl transition hover:translate-x-1">
           <Link to="/">
             JOIN WAY <span className="text-red-600">FILM</span>
           </Link>
         </div>
         {/* Regular Links */}
         <div className="hidden lg:flex justify-between items-center w-1/2 text-2xl">
-          <Link to="/" onClick={() => scrollToSection("")}>
-            HOME
-          </Link>
-          <button onClick={() => scrollToSection("about")}>ABOUT US</button>
-          <Link to="/movies">SEARCH</Link>
-          <button onClick={() => scrollToSection("top")}>TOP MOVIES</button>
+          {links.map((link, index) =>
+            link.path === "#" ? (
+              <button
+                key={index}
+                onMouseEnter={() => handleMouseEnter(link.label)}
+                onMouseLeave={handleMouseLeave}
+                onClick={() => scrollToSection(link.section)}
+                className={`${
+                  hoveredLink && hoveredLink !== link.label
+                    ? "opacity-50"
+                    : "opacity-100"
+                } transition-opacity duration-300`}
+              >
+                {link.label}
+              </button>
+            ) : (
+              <Link
+                key={index}
+                to={link.path}
+                onMouseEnter={() => handleMouseEnter(link.label)}
+                onMouseLeave={handleMouseLeave}
+                className={`${
+                  hoveredLink && hoveredLink !== link.label
+                    ? "opacity-50"
+                    : "opacity-100"
+                } transition-opacity duration-300`}
+              >
+                {link.label}
+              </Link>
+            )
+          )}
         </div>
         {/* Section 2 */}
         <div className="relative flex items-center space-x-4 ">

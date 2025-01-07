@@ -6,6 +6,7 @@ import {
 } from "../../redux/api/movies";
 import { useFetchGenresQuery } from "../../redux/api/genre";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
 
 const CreateMovie = () => {
   const navigate = useNavigate();
@@ -143,7 +144,16 @@ const CreateMovie = () => {
       style={{ backgroundImage: "url('/auth-bg.png')" }}
     >
       <div className="container mx-auto">
-        <form>
+        <motion.form
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ margin: "-100px", once: true }}
+          transition={{
+            type: "spring",
+            stiffness: 50,
+            damping: 25,
+          }}
+        >
           <h1 className="font-bold text-4xl mb-5">Create Movie</h1>
           {/* Name */}
           <div className="mb-3 ">
@@ -310,7 +320,7 @@ const CreateMovie = () => {
               ? "Creating..."
               : "Create Movie"}
           </button>
-        </form>
+        </motion.form>
       </div>
     </div>
   );

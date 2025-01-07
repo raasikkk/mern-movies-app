@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+
 const Footer = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,6 +26,24 @@ const Footer = () => {
     }
   };
 
+  // Links Hover Effect
+  const [hoveredLink, setHoveredLink] = useState(null);
+
+  const handleMouseEnter = (link) => {
+    setHoveredLink(link);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredLink(null);
+  };
+
+  const links = [
+    { label: "HOME", path: "/", section: "" },
+    { label: "ABOUT US", path: "#", section: "about" },
+    { label: "SEARCH", path: "/movies", section: null },
+    { label: "TOP MOVIES", path: "#", section: "top" },
+  ];
+
   return (
     <div className="mt-10">
       <div className="container mx-auto flex flex-col flex-wrap">
@@ -45,27 +65,51 @@ const Footer = () => {
 
           {/* Links */}
           <div className="flex flex-col lg:flex-row gap-5 lg:gap-0 justify-between lg:items-center w-1/2 text-2xl">
-            <Link to="/" onClick={() => scrollToSection("")}>
-              HOME
-            </Link>
-            <button className="flex" onClick={() => scrollToSection("about")}>
-              ABOUT US
-            </button>
-            <Link to="/movies">SEARCH</Link>
-            <button className="flex" onClick={() => scrollToSection("top")}>
-              TOP MOVIES
-            </button>
+            {links.map((link, index) =>
+              link.path === "#" ? (
+                <button
+                  key={index}
+                  onMouseEnter={() => handleMouseEnter(link.label)}
+                  onMouseLeave={handleMouseLeave}
+                  onClick={() => scrollToSection(link.section)}
+                  className={`${
+                    hoveredLink && hoveredLink !== link.label
+                      ? "opacity-50"
+                      : "opacity-100"
+                  } transition-opacity text-start duration-300`}
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <Link
+                  key={index}
+                  to={link.path}
+                  onMouseEnter={() => handleMouseEnter(link.label)}
+                  onMouseLeave={handleMouseLeave}
+                  className={`${
+                    hoveredLink && hoveredLink !== link.label
+                      ? "opacity-50"
+                      : "opacity-100"
+                  } transition-opacity text-start duration-300`}
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </div>
 
           {/* Icons */}
           <div className="flex items-center gap-3 mt-5 lg:mt-0 text-3xl">
-            <Link to="/">
+            <Link
+              className="transition hover:-translate-y-1"
+              to="https://github.com/raasikkk/mern-movies-app"
+            >
               <FaGithub />
             </Link>
-            <Link to="/">
+            <Link className="transition hover:-translate-y-1" to="/">
               <FaInstagram />
             </Link>
-            <Link to="/">
+            <Link className="transition hover:-translate-y-1" to="/">
               <FaLinkedin />
             </Link>
           </div>
