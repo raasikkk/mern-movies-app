@@ -30,7 +30,15 @@ const UpcomingFilms = ({ horizontal }) => {
         }`}
       >
         {/* First */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ margin: "-100px", once: true }}
+          transition={{
+            type: "spring",
+            stiffness: 50,
+            damping: 25,
+          }}
           className="upcoming-card flex flex-col px-3 justify-end gap-3"
           style={{
             backgroundImage: `url(${
@@ -58,10 +66,18 @@ const UpcomingFilms = ({ horizontal }) => {
               2025
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Second */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ margin: "-100px", once: true }}
+          transition={{
+            type: "spring",
+            stiffness: 50,
+            damping: 25,
+          }}
           className="upcoming-card flex flex-col px-3 justify-end gap-3"
           style={{
             backgroundImage: `url(${
@@ -89,10 +105,18 @@ const UpcomingFilms = ({ horizontal }) => {
               2025
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Third */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ margin: "-100px", once: true }}
+          transition={{
+            type: "spring",
+            stiffness: 50,
+            damping: 25,
+          }}
           className="upcoming-card flex flex-col px-3 justify-end gap-3"
           style={{
             backgroundImage: `url(${
@@ -120,7 +144,7 @@ const UpcomingFilms = ({ horizontal }) => {
               2025
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

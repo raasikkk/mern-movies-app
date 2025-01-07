@@ -38,7 +38,7 @@ const Footer = () => {
   };
 
   const links = [
-    { label: "HOME", path: "/", section: "" },
+    { label: "HOME", path: "#", section: "home" },
     { label: "ABOUT US", path: "#", section: "about" },
     { label: "SEARCH", path: "/movies", section: null },
     { label: "TOP MOVIES", path: "#", section: "top" },

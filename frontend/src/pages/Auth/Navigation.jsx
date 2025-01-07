@@ -71,7 +71,7 @@ const Navigation = () => {
   };
 
   const links = [
-    { label: "HOME", path: "/", section: "" },
+    { label: "HOME", path: "#", section: "home" },
     { label: "ABOUT US", path: "#", section: "about" },
     { label: "SEARCH", path: "/movies", section: null },
     { label: "TOP MOVIES", path: "#", section: "top" },
@@ -125,7 +125,7 @@ const Navigation = () => {
           {userInfo ? (
             <button
               onClick={toggleDropdown}
-              className="text-gray-800  flex focus:outline-none"
+              className="text-gray-800 flex focus:outline-none transition hover:translate-x-1"
             >
               <span className="text-white text-xl md:text-2xl uppercase flex items-center gap-2 md:gap-4">
                 {userInfo.username}

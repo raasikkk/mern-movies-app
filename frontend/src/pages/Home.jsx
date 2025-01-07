@@ -8,7 +8,9 @@ import UpcomingFilms from "./Movies/UpcomingFilms";
 const Home = () => {
   return (
     <div>
-      <Hero />
+      <div id="home">
+        <Hero />
+      </div>
       <div id="about">
         <About />
       </div>
